@@ -1,0 +1,49 @@
+---
+title: "109-1 資料科學程式設計（一）"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = F)
+```
+
+# 第一次期中考 
+
+## 考試設定
+
+打開RStudio, 
+
+1. 下載examR套件與安裝
+```{r}
+download.file(examRfileURL,
+              destfile = examRfileLocal)
+install.packages(examRfileLocal, repos=NULL, type="source")
+```
+
+2. 啟動套件
+```{r}
+library(examR)
+```
+
+3. 設定環境
+
+  * 姓名，學號，gmail(google classroom登入用的) 一定要對才會產生屬於你的正確考試檔案。
+  
+```{r}
+setup_exam()
+```
+
+  * 會restart R問你要不要存.RData，選yes或no都可以。
+  
+4．RStudio自動動啟後，點Files裡你專屬的midter1_XXXX.Rmd檔開啟作答。
+
+5. 中間要存檔時請在Console執行：
+```{r}
+saveExam()
+```
+
+6. 要交卷時請在Console執行：
+```{r}
+turninExam()
+```
+
