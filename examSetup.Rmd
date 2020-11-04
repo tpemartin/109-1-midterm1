@@ -1,0 +1,104 @@
+---
+title: "考試環境設定需知"
+output: 
+  html_document:
+   output_file: "docs/index.html"
+---
+
+```{r setup, eval=T, include=FALSE}
+knitr::opts_chunk$set(echo = T, eval=F)
+rprojroot::is_rstudio_project -> .pj
+.pj$make_fix_file() -> root
+
+```
+
+```{r, echo=FALSE}
+rmarkdown::render(
+input=file.path(root(),"examSetup.Rmd"),
+output_format="html_document",
+output_file=file.path(root(),"docs","index"),
+output_options = list("self_contained"=T)
+)
+fileList <- list.files()
+stringr::str_which(fileList, ".png") -> whichHasPng
+# if(!dir.exists(file.path(root(),"docs/img"))) {
+#   dir.create(file.path(root(),"docs/img"))
+# }
+pngfilenames <- fileList[whichHasPng]
+imgDir <- file.path(root(),"docs")
+purrr::walk(
+  pngfilenames,
+  ~{
+    file.copy(
+  from=file.path(root(),.x),
+  to= file.path(imgDir,.x)
+)
+  }
+)
+
+```
+
+所有步驟均在**Console**視窗執行。
+
+## 步驟1
+
+```{r}
+remotes::install_github("tpemartin/examR", force=T)
+```
+
+若出現以下畫面，請選「4」
+  ```{r eval=T, echo=F}
+  teachDS::img_centering("updateAlert.png")
+  ```
+
+## 步驟2
+
+```{r}
+library(examR)
+setup_exam()
+```
+
+  * 中間會要求你登入**Google classroom**, **Github**, **Gitter** (使用你github account)，及**Google drive**（與Google classroom同gmail）以驗證你的身份，請同意登入。
+  
+<div class="alert alert-danger">
+考試時只有使用這裡指令跳出的平台登入頁面允許登入外，其他時間均**不允許**連到任何平台進行**登入**動作，只能單純瀏覽頁面。
+</div>
+
+  * 中間有步驟可能會出現。
+  ```{r eval=T, echo=F}
+  teachDS::img_centering("httr_oauth.png")
+  ```
+  請選1. 
+
+  * 接著會有學號輸入要求，請務必正確否則考試檔可能內容會有誤。
+
+  * 最後一步會出現
+  ```{r eval=T, echo=F}
+  teachDS::img_centering("switchProject.png")
+  ```
+  選Save. 
+
+## 步驟3
+
+如果有成功完成會開一個project folder, 同時在裡面生成一個類似**midterm1_41077398.Rmd**檔案，請點開它作答。
+
+***
+
+## 作答中
+
+要雲端備份：
+```{r}
+storeExam()
+```
+
+要從雲端拿回最近一次的備份
+```{r}
+restoreExam()
+```
+
+## 交卷
+
+```{r}
+turninExam()
+```
+
