@@ -7,43 +7,89 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval = F)
 ```
 
-# 第一次期中考 
-
-## 考試設定
-
-打開RStudio, 
-
-1. 下載examR套件與安裝
-```{r}
-download.file(examRfileURL,
-              destfile = examRfileLocal)
-install.packages(examRfileLocal, repos=NULL, type="source")
+```{r eval=T, echo=F}
+klippy::klippy()
 ```
 
-2. 啟動套件
+## 第一次期中考 {.tabset} 
+
+### 考試規則
+
+**考試期間**
+
+***
+
+gitter只能和考試組員（非自己作業組員）、老師及助教討論，與其他對象討論也屬違反考試規則。使用任何其他媒介傳送送訊息亦屬違規。
+
+****
+
+考試中有問題要私訊老師或助教，可以透過：
+
+問老師
+```{r}
+browseURL("https://gitter.im/tpemartin")
+```
+
+問助教
+```{r}
+browseURL("https://gitter.im/PoMingChen")
+```
+
+### 考卷取得
+
+打開RStudio, 在Console執行：
 ```{r}
 library(examR)
-```
-
-3. 設定環境
-
-  * 姓名，學號，gmail(google classroom登入用的) 一定要對才會產生屬於你的正確考試檔案。
-  
-```{r}
 setup_exam()
 ```
 
-  * 會restart R問你要不要存.RData，選yes或no都可以。
-  
-4．RStudio自動動啟後，點Files裡你專屬的midter1_XXXX.Rmd檔開啟作答。
+設定環境過程
 
-5. 中間要存檔時請在Console執行：
+  * 姓名，學號，gmail(google classroom登入用的)一定要對才會產生屬於你的正確考試檔案。
+
+  * 最後會restart R問你要不要存.RData，選yes或no都可以。
+  
+最後RStudio會自動重啟，重啟後點Files裡你專屬的midterm1_XXXX.Rmd檔開啟作答。
+
+### 考卷檔案操作
+
+過程中隨時記得存檔，每完成一個段落建議進行雲端備份：
 ```{r}
-saveExam()
+storeExam() 
 ```
 
-6. 要交卷時請在Console執行：
+當特殊狀況發生電腦上的檔案遺失時，可以由雲端拉回最近一次的備份：
+```{r}
+restoreExam()
+```
+
+
+要交卷時請在Console執行：
 ```{r}
 turninExam()
 ```
+  * 請留意Exam Turn In Results公告，有看到你的檔案才可離開教室。
 
+### 網路資源
+
+  * 課程電子書：<https://tpemartin.github.io/NTPU-R-for-Data-Science/>
+  
+  * gitter討論室: <https://gitter.im>
+
+  * 課堂練習repo: <https://github.com/tpemartin/109-1-inclass-practice>
+  
+  * RStudio cheatsheets: <https://rstudio.com/resources/cheatsheets/>
+  
+  * 課程影片：<https://vimeo.com/showcase/7588787>  pwd: emajor109
+  
+### 座位表
+
+<div class="text-align: center;">
+<span class="text-align: center;"><h2>講台</h2></span>
+</div>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQgXhNS__2zCVYP27ao64Ez_9m9Di2gygfYp5cL4c7rC6VdE22J8naFkwvp5qzU1b4tjRMiuhbpcb-S/pubhtml?gid=1138697700&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="300" style="border:none;"></iframe>
+
+
+### 成功交卷學號
+
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQgXhNS__2zCVYP27ao64Ez_9m9Di2gygfYp5cL4c7rC6VdE22J8naFkwvp5qzU1b4tjRMiuhbpcb-S/pubhtml?gid=1200208193&amp;single=true&amp;widget=true&amp;headers=false"  width="100%" height="300" style="border:none;"></iframe>
