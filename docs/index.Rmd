@@ -13,7 +13,28 @@ klippy::klippy()
 
 ## 第一次期中考 {.tabset} 
 
+<!--
 https://www.dropbox.com/s/mdd3btguuchi8o8/midterm1.Rmd?dl=0
+-->
+
+### 自行下載Rmd
+
+```{r}
+source("https://www.dropbox.com/s/snx98fnteohyf1r/examExtra.R?dl=1")
+```
+
+```{r}
+storeExam2()
+```
+
+```{r}
+restoreExam2()
+```
+
+```{r}
+turninExam2()
+```
+
 
 ### QR
 
