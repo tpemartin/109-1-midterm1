@@ -13,6 +13,13 @@ klippy::klippy()
 
 ## 第一次期中考 {.tabset} 
 
+### QR
+
+```{r eval=T, echo=F}
+teachDS::img_centering("download.png", width="100%")
+```
+
+
 ### 考試規則
 
 **考試期間**
